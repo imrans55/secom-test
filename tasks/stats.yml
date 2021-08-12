@@ -2,5 +2,3 @@
   pip:
     - jetson-stats
   
-- name: release
-  ansible.builtin.shell: jetson_release
