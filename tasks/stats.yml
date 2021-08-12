@@ -1,0 +1,6 @@
+- name: Install stats
+  pip:
+    - jetson-stats
+  
+- name: release
+    ansible.builtin.shell: jetson_release
