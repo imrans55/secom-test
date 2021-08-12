@@ -1,4 +1,4 @@
 - name: Install stats
-  pip:
+  pip3:
     - jetson-stats
   
