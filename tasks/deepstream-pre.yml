@@ -12,13 +12,13 @@
       - libjansson4=2.11-1
 
 - name: Install libdrkafka
-  ansible.builtin.command: git clone https://github.com/edenhill/librdkafka.git
+  command: git clone https://github.com/edenhill/librdkafka.git
   chdir: /home/librdkafka
-  ansible.builtin.command: git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
-  ansible.builtin.command: ./configure
-  ansible.builtin.command: make
-  ansible.builtin.command: sudo make install
-  ansible.builtin.command: sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
-  ansible.builtin.command: sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
+  command: git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
+  command: ./configure
+  command: make
+  command: sudo make install
+  command: sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
+  command: sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
 
   
