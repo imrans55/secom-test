@@ -1,0 +1,9 @@
+- name: Install Jetson Stats
+  ansible.builtin.command: sudo -H pip3 install -U jetson-stats
+
+- name: Reboot the system
+  ansible.builtin.command: sudo reboot
+
+- name: Release command
+  ansible.builtin.command: jetson_release
+  
