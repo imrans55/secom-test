@@ -18,8 +18,8 @@
     dest: /home/librdkafka
 
 - name: make
-  chdir: /home/librdkafka
   command: 
+    - cd /home/librdkafka
     - git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
     - ./configure
     - make
