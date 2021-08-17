@@ -1,0 +1,6 @@
+- name: Install Jetson Stats
+  command: sudo -H pip3 install -U jetson-stats
+
+- name: Release command
+  command: jetson_release
+  
