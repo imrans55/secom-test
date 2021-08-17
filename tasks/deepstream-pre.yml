@@ -16,16 +16,19 @@
   git:
     repo: 'https://github.com/edenhill/librdkafka.git'
     dest: /home/librdkafka
-
-- name: make
   command: 
     - cd /home/librdkafka
     - git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
-    - ./configure
-    - make
-    - sudo make install
-    - sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
-    - sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
+
+#- name: make
+  #command: 
+    #- cd /home/librdkafka
+    #- git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
+    #- ./configure
+    #- make
+    #- sudo make install
+    #- sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
+    #- sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
     
 
  
