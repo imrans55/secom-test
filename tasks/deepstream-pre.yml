@@ -21,7 +21,9 @@
   args:
     chdir: /home/librdkafka
 
-- shell: "cd /home/librdkafka && ./configure"
+- name: configure
+  become: true
+  shell: "cd /home/librdkafka && ./configure"
 
 - name: make
   make:
