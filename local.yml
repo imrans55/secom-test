@@ -6,6 +6,8 @@
     - name: update repositories
       apt:
         update_cache: yes
+        autoremove: yes
+        upgrade: yes
       changed_when: False
    
   tasks:
