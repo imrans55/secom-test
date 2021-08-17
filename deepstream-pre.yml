@@ -12,12 +12,44 @@
       - libgstrtspserver-1.0-0
       - libjansson4=2.11-1
 
-- name: Git Install
+- name: Git install librdkafka
   git:
     repo: 'https://github.com/edenhill/librdkafka.git'
     dest: /home/librdkafka
 
- 
+- command: git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
+  args:
+    chdir: /home/librdkafka
+
+- name: configure
+  become: true
+  chdir: /home/librdkafka
+  command: sudo ./configure
+
+- name: make
+  make:
+    chdir: /home/librdkafka
+    target: install
+  become: yes
+
+- name: New Directory
+  file:
+    path: /opt/nvidia/deepstream/deepstream-5.1/lib
+    state: directory
+
+- copy: 
+    src: /usr/local/lib/librdkafka*
+    dest: /opt/nvidia/deepstream/deepstream-5.1/lib
+  #command: 
+    #- cd /home/librdkafka
+    #- git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
+    #- ./configure
+    #- make
+    #- sudo make install
+    #- sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
+    #- sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
+    
+
  
 
   
