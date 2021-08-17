@@ -12,17 +12,12 @@
       - libgstrtspserver-1.0-0
       - libjansson4=2.11-1
 
-- name: Install libdrkafka
-  become: true
-  command: 
-    - git clone https://github.com/edenhill/librdkafka.git
-    - cd librdkafka
-    - git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
-    - ./configure
-    - make
-    - sudo make install
-    - sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
-    - sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
+- name: Git Install
+  git:
+    repo: 'https://github.com/edenhill/librdkafka.git'
+    dest: /home/librdkafka
+
+ 
  
 
   
