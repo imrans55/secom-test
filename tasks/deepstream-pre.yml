@@ -39,10 +39,7 @@
     path: /opt/nvidia/deepstream/deepstream-5.1/lib
     state: directory
 
-- copy: 
-    src: /usr/local/lib/librdkafka*
-    dest: /opt/nvidia/deepstream/deepstream-5.1/lib
-  
+- command: sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
     
 
  
