@@ -31,11 +31,9 @@
   args: 
     chdir: /home/librdkafka
 
-- name: make
-  become: yes
-  make:
+- command: sudo make install
+  args:
     chdir: /home/librdkafka
-    target: install
 
 - name: New Directory
   file:
