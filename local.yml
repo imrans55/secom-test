@@ -9,7 +9,12 @@
         autoremove: yes
         upgrade: yes
       changed_when: true
-   
+      
+  vars_prompt:
+    - name: remove_cmake
+      prompt: "Do you want to continue?"
+      private: yes
+
   tasks:
     - include: tasks/init.yml
     #- include: tasks/stats.yml
