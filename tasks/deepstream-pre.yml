@@ -23,13 +23,16 @@
 
 - name: configure
   become: true
-  shell: "cd /home/librdkafka && ./configure"
+  command: sudo ./configure
+  args: 
+    chdir: /home/librdkafka
+  
 
 - name: make
+  become: yes
   make:
     chdir: /home/librdkafka
     target: install
-  become: yes
 
 - name: New Directory
   file:
@@ -39,14 +42,7 @@
 - copy: 
     src: /usr/local/lib/librdkafka*
     dest: /opt/nvidia/deepstream/deepstream-5.1/lib
-  #command: 
-    #- cd /home/librdkafka
-    #- git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
-    #- ./configure
-    #- make
-    #- sudo make install
-    #- sudo mkdir -p /opt/nvidia/deepstream/deepstream-5.1/lib
-    #- sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
+  
     
 
  
