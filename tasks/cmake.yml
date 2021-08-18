@@ -4,7 +4,9 @@
     command: sudo apt remove --purge --auto-remove cmake
     chdir: /home/jetson
     responses:
-      'First Question in the prompt' : 'y'
+      'Do you want to continue?' : 'y'
+      'Do you want to continue?' : 'y'
+
   
 - become: true
   command: sudo wget https://github.com/Kitware/CMake/releases/download/v3.13.5/cmake-3.13.5.tar.gz
