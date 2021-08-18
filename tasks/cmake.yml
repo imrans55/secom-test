@@ -1,35 +1,42 @@
-- name: cmake Install
-  become: true
-  command: sudo apt remove --purge --auto-remove cmake
-  args:
-    chdir: /home/jetson
+- vars_prompt:
+    - name: remove_cmake
+      prompt: "Do you want to continue?"
+      private: yes
 
-- become: true
-  command: sudo wget https://github.com/Kitware/CMake/releases/download/v3.13.5/cmake-3.13.5.tar.gz
-  args:
-    chdir: /home/jetson
+tasks: 
+  - name: cmake Install
+    become: true
+    command: sudo apt remove --purge --auto-remove cmake
+    args:
+      chdir: /home/jetson
+    when: remove_cmake
 
-- become: true
-  command:  tar xvf cmake-3.13.5.tar.gz
-  args:
-    chdir: /home/jetson
+  - become: true
+    command: sudo wget https://github.com/Kitware/CMake/releases/download/v3.13.5/cmake-3.13.5.tar.gz
+    args:
+      chdir: /home/jetson
 
-- become: true
-  command: sudo ./configure
-  args:
-    chdir: cmake-3.13.5
+  - become: true
+    command:  tar xvf cmake-3.13.5.tar.gz
+    args:
+      chdir: /home/jetson
 
-- become: true
-  command: sudo make -j$(nproc)
-  args:
-    chdir: cmake-3.13.5
+  - become: true
+    command: sudo ./configure
+    args:
+      chdir: cmake-3.13.5
 
-- become: true
-  command: sudo make install
-  args:
-    chdir: cmake-3.13.5
+  - become: true
+    command: sudo make -j$(nproc)
+    args:
+      chdir: cmake-3.13.5
 
-- become: true
-  command: sudo ln -s /usr/local/bin/cmake /usr/bin/cmake
-  args:
-    chdir: cmake-3.13.5
+  - become: true
+    command: sudo make install
+    args:
+      chdir: cmake-3.13.5
+
+  - become: true
+    command: sudo ln -s /usr/local/bin/cmake /usr/bin/cmake
+    args:
+      chdir: cmake-3.13.5
