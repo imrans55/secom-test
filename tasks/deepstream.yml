@@ -1,0 +1,18 @@
+- name: Deepstream Install
+  command: sudo tar -xvf deepstream_sdk_v5.1.0_jetson.tbz2 -C /
+
+- command: sudo ./intsall.sh
+  args:
+    chdir: /opt/nvidia/deepstream/deepstream-5.1
+  
+- command: sudo idconfig
+  args:
+    chdir: /opt/nvidia/deepstream/deepstream-5.1
+
+- command: sudo nvpmodel -m 0
+  args:
+    chdir: /opt/nvidia/deepstream/deepstream-5.1
+
+- command: sudo jetson_clocks
+  args:
+    chdir: /opt/nvidia/deepstream/deepstream-5.1
