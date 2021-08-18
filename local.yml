@@ -14,3 +14,4 @@
     - include: tasks/init.yml
     #- include: tasks/stats.yml
     - include: tasks/deepstream-pre.yml
+    - include: tasks/deepstream.yml
