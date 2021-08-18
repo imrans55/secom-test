@@ -1,0 +1,12 @@
+- name: Install curl
+  become: true
+  apt:
+    name:
+      - curl
+
+- name: Install Zero Tier
+  become: true
+  command: curl -s https://install.zerotier.com | sudo bash
+
+
+  
