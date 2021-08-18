@@ -23,10 +23,17 @@
   args:
     chdir: /home/jetson/cmake-3.13.5
 
-- become: true
-  command: sudo make -j$(nproc)
-  args:
+- name: Run 'install' target as root
+  make:
     chdir: /home/jetson/cmake-3.13.5
+    target: install
+    params: -j$(nproc)
+  become: yes
+
+#- become: true
+  #command: sudo make -j$(nproc)
+  #args:
+    #chdir: /home/jetson/cmake-3.13.5
 
 - become: true
   command: sudo make install
