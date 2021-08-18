@@ -1,8 +1,11 @@
 - name: cmake Install
   become: true
-  command: sudo apt remove --purge --auto-remove cmake
-  args:
-    chdir: /home/jetson
+  expect:
+    command: sudo apt remove --purge --auto-remove cmake
+    args:
+      chdir: /home/jetson
+    responses:
+      'First Question in the prompt' : 'y'
   
 - become: true
   command: sudo wget https://github.com/Kitware/CMake/releases/download/v3.13.5/cmake-3.13.5.tar.gz
