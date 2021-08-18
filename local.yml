@@ -8,9 +8,9 @@
         update_cache: yes
         autoremove: yes
         upgrade: yes
-      changed_when: False
+      changed_when: true
    
   tasks:
     - include: tasks/init.yml
-    #- include: tasks/stats.yml
+    - include: tasks/stats.yml
     - include: tasks/deepstream-pre.yml
