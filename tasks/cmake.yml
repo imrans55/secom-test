@@ -2,8 +2,7 @@
   become: true
   expect:
     command: sudo apt remove --purge --auto-remove cmake
-    args:
-      chdir: /home/jetson
+    chdir: /home/jetson
     responses:
       'First Question in the prompt' : 'y'
   
