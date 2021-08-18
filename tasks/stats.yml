@@ -6,7 +6,7 @@
   shell: "sleep 5 && reboot"
   asunc: 1
   poll: 0
-  when: task_result is chamged
+  when: task_result is changed
 
 - name: Wait for the reboot to complete if there was a change.
   wait_for_connection:
