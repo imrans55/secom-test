@@ -27,7 +27,6 @@
   make:
     chdir: /home/jetson/cmake-3.13.5
     target: install
-    params: -j$(nproc)
   become: yes
 
 #- become: true
