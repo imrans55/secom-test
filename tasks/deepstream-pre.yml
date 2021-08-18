@@ -12,10 +12,13 @@
       - libgstrtspserver-1.0-0
       - libjansson4=2.11-1
 
-- command: git clone https://github.com/edenhill/librdkafka.git
-  args: 
-    chdir: /home/librdkafka
-
+- git:
+    repo: 'https://github.com/edenhill/librdkafka.git'
+    dest: /home/librdkafka
+    clone: no
+    update: yes
+    force: yes
+  
 - command: git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
   args:
     chdir: /home/librdkafka
@@ -40,7 +43,7 @@
     state: directory
 
 - command: sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-5.1/lib
-    
+  ignore_errors: yes
 
  
 
