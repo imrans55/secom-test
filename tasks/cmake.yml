@@ -21,19 +21,19 @@
 - become: true
   command: sudo ./configure
   args:
-    chdir: cmake-3.13.5
+    chdir: /home/jetson/cmake-3.13.5
 
 - become: true
   command: sudo make -j$(nproc)
   args:
-    chdir: cmake-3.13.5
+    chdir: /home/jetson/cmake-3.13.5
 
 - become: true
   command: sudo make install
   args:
-    chdir: cmake-3.13.5
+    chdir: /home/jetson/cmake-3.13.5
 
 - become: true
   command: sudo ln -s /usr/local/bin/cmake /usr/bin/cmake
   args:
-    chdir: cmake-3.13.5
+    chdir: /home/jetson/cmake-3.13.5
