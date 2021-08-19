@@ -11,14 +11,18 @@
   command: git submodule update --init --recursive
   args:
     chdir: /home/jetson/TensorRT
+
+- name: pwd
+  shell: pwd
+  register: TRT_SOURCE
+
     
 - name: Tensor install 3
   become: true
   shell: mkdir -p build && cd build
   args: 
-    chdir: "{{ TRT_SOURCE }}"
+    chdir: TRT_SOURCE 
   environment: 
-    TRR_SOURCE: "`pwd`"
     CUDA_HOME: /usr/local/cuda
     LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
     PATH: $PATH:$CUDA_HOME/bin
