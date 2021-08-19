@@ -21,7 +21,7 @@
 
 - name: Tensor install 3
   become: true
-  command: mkdir -p build 
+  command: mkdir build 
   args: 
     chdir: "{{ TRT_SOURCE }}"
   environment: 
