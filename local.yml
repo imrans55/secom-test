@@ -15,6 +15,6 @@
     #- include: tasks/stats.yml
     #- include: tasks/deepstream-pre.yml
     #- include: tasks/deepstream.yml
-    - include: tasks/cmake.yml
-    #- include: tasks/tensort.yml
+    #- include: tasks/cmake.yml
+    - include: tasks/tensort.yml
     #- include: tasks/ztier.yml
