@@ -1,8 +1,10 @@
 - name: Tensor Install
   become: true 
-  command: git clone -b release/7.0 https://github.com/nvidia/TensorRT TensorRT
-  args:
-    chdir: /home/jetson
+  git:
+    repo: 'https://github.com/nvidia/TensorRT'
+    dest: /home/jetson
+    clone: yes
+    update: no
   environment:
     CUDA_HOME: /usr/local/cuda
     LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
