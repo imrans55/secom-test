@@ -22,7 +22,7 @@
 - name: Tensor install 3
   become: true
   file: 
-    path: "{{ TRT_SOURCE }}"/build
+    path: /home/jetson/TensorRT/build
     state: directory
   environment: 
     CUDA_HOME: /usr/local/cuda
