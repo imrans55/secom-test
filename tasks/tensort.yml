@@ -23,7 +23,7 @@
   become: true
   shell: mkdir -p build && cd build
   args: 
-    chdir: var=TRT_SOURCE
+    chdir: {{ TRT_SOURCE }}
   environment: 
     CUDA_HOME: /usr/local/cuda
     LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
