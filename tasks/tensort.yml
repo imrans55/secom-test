@@ -16,12 +16,14 @@
   shell: pwd
   register: TRT_SOURCE
 
-    
+- set_fact:
+    TRT_SOURCE={{ TRT_SOURCE.stdout }}
+
 - name: Tensor install 3
   become: true
   shell: mkdir -p build && cd build
   args: 
-    chdir: var=TRT_SOURCE.stdout 
+    chdir: var=TRT_SOURCE
   environment: 
     CUDA_HOME: /usr/local/cuda
     LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
