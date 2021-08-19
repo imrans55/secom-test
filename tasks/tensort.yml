@@ -2,33 +2,33 @@
   become: true 
   command: git clone -b release/7.0 https://github.com/nvidia/TensorRT
   args:
-   chdir: /home/jetson
+    chdir: /home/jetson
   environment:
     CUDA_HOME: /usr/local/cuda
-    export LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
-    export PATH: $PATH:$CUDA_HOME/bin
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+    PATH: $PATH:$CUDA_HOME/bin
 
 - name: Tensor Install 2 
   become: true 
   command: git submodule update --init --recursive
   args:
-   chdir: /home/jetson/TensorRT
+    chdir: /home/jetson/TensorRT
   environment:
     CUDA_HOME: /usr/local/cuda
-    export LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
-    export PATH: $PATH:$CUDA_HOME/bin
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+    PATH: $PATH:$CUDA_HOME/bin
     
 - name: Tensor install 3
   become: true
   shell: mkdir -p build && cd build
   args: 
-    chdir: $TRT_SOURCE
+    chdir: "{{ TRT_SOURCE }}"
   vars:
-    TRT_SOURCE: `pwd`
+    TRT_SOURCE: "`pwd`"
   environment: 
     CUDA_HOME: /usr/local/cuda
-    export LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
-    export PATH: $PATH:$CUDA_HOME/bin
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+    PATH: $PATH:$CUDA_HOME/bin
 
 - name: Tensor Install 4
   become: true 
@@ -36,7 +36,7 @@
   
 - name: Tensor Install 5
   become: true 
-  command: make nvinfer_plugin -j$(nproc)
+  command: make nvinfer_plugin 
   
 - name: Libvinfer install 
   become: true 
@@ -49,3 +49,5 @@
 - name: Libvinfer install 3
   become: true 
   command: sudo ldconfig
+  args:
+    chdir: /usr/lib/aarch64-linux-gnu/libnvinfer_plugin.so.7.1.3
