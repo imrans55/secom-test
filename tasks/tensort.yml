@@ -1,6 +1,5 @@
 - name: Tensor Install
   become: true 
-  command: mkdir /home/jetson/TensorRT
   git:
     repo: 'https://github.com/nvidia/TensorRT'
     dest: /home/jetson/TensorRT
