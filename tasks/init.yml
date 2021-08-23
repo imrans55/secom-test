@@ -30,7 +30,7 @@
 - name: Installing Cloud SDK ... ... ...
   become: yes
   expect:
-    command: sudo apt-get update && sudo apt-get install google-cloud-sdk
+    command: sudo apt-get install google-cloud-sdk
     responses:
       'Do you want to continue?' : 'y'
       'Do you want to continue?' : 'y'
