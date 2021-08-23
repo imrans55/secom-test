@@ -1,7 +1,3 @@
-- name: Installing Cloud SDK
-  become: yes
-  command: sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
 - name: Installing packages
   become: true
   apt:
@@ -11,10 +7,19 @@
       - python-pexpect
       - nodejs
       - npm
-      - apt-transport-https
-      - ca-certificates
-      - gnupg
-      - curl 
+      
+
+- name: Installing Cloud SDK
+  become: yes
+  command: sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+- name: Required packages
+  become: yes
+  apt:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+    - curl 
 
 - name: Installing Cloud SDK ...
   become: yes
