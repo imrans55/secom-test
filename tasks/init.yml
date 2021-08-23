@@ -28,9 +28,7 @@
   
 - name: Installing Cloud SDK ... ... ...
   become: yes
-  apt:
-    name:
-      - google-cloud-sdk
+  shell: sudo apt-get update && sudo apt-get install google-cloud-sdk
 
 - name: Starting the SDk
   become: yes
