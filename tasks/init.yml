@@ -7,7 +7,7 @@
       - python-pexpect
       - nodejs
       - npm
-      
+      - apt-utils
 
 - name: Installing Cloud SDK
   become: yes
