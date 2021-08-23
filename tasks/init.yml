@@ -16,10 +16,11 @@
 - name: Required packages
   become: yes
   apt:
-    - apt-transport-https
-    - ca-certificates
-    - gnupg
-    - curl 
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - curl 
 
 - name: Installing Cloud SDK ...
   become: yes
@@ -28,7 +29,8 @@
 - name: Installing Cloud SDK ... ...
   become: yes
   apt:
-    - google-cloud-sdk
+    name:
+      - google-cloud-sdk
 
 - name: Starting the SDk
   become: yes
