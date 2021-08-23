@@ -29,7 +29,12 @@
   
 - name: Installing Cloud SDK ... ... ...
   become: yes
-  shell: sudo apt-get update && sudo apt-get install google-cloud-sdk
+   expect:
+    shell: sudo apt-get update && sudo apt-get install google-cloud-sdk
+    responses:
+      'Do you want to continue?' : 'y'
+      'Do you want to continue?' : 'y'
+  
 
 - name: Starting the SDk
   become: yes
