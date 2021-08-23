@@ -24,9 +24,13 @@
 
 - name: Installing Cloud SDK ...
   become: yes
-  command: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+  command: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg 
 
 - name: Installing Cloud SDK ... ...
+  become: yes
+  command: sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+- name: Installing Cloud SDK ... ... ...
   become: yes
   apt:
     name:
