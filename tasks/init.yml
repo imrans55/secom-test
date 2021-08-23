@@ -1,7 +1,31 @@
-- name: Install packages
+- name: Installing Cloud SDK
+  become: true
+  command: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+- name: Installing packages
   become: true
   apt:
     name:
       - htop
       - mc
       - python-pexpect
+      - nodejs
+      - npm
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+      - curl 
+
+- name: Installing Cloud SDK ...
+  become: yes
+  command: curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+- name: Installing Cloud SDK ... ...
+  become: yes
+  apt:
+    - google-cloud-sdk
+
+- name: Starting the SDk
+  become: yes
+  command: gcloud init
+
