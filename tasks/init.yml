@@ -1,6 +1,6 @@
 - name: Installing Cloud SDK
-  become: true
-  command: echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+  become: yes
+  command: sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 - name: Installing packages
   become: true
