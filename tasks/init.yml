@@ -36,7 +36,7 @@
       'Do you want to continue?' : 'y'
   
 
-- name: Starting the SDk
-  become: yes
-  command: gcloud init
+#- name: Starting the SDk
+  #become: yes
+  #command: gcloud init
 
