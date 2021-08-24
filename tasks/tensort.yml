@@ -31,7 +31,7 @@
 
 - name: Tensor Install 4
   become: true 
-  command: /usr/local/bin/cmake .. -DGPU_ARCHS=53  -DTRT_LIB_DIR=/usr/lib/aarch64-linux-gnu/ -DCMAKE_C_COMPILER=/usr/bin/gcc -DTRT_BIN_DIR=`pwd`/out
+  command: sudo CUDACXX=/usr/local/cuda-10/bin/nvcc /usr/local/bin/cmake .. -DGPU_ARCHS=53  -DTRT_LIB_DIR=/usr/lib/aarch64-linux-gnu/ -DCMAKE_C_COMPILER=/usr/bin/gcc -DTRT_BIN_DIR=`pwd`/out
   args:
     chdir: /home/jetson/TensorRT/build
   environment: 
