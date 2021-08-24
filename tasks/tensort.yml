@@ -26,7 +26,7 @@
     state: directory
   environment: 
     CUDA_HOME: /usr/local/cuda
-    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI
     PATH: $PATH:$CUDA_HOME/bin
 
 - name: Tensor Install 4
@@ -34,7 +34,11 @@
   command: sudo CUDACXX=/usr/local/cuda-10/bin/nvcc cmake .. -DGPU_ARCHS=53  -DTRT_LIB_DIR=/usr/lib/aarch64-linux-gnu/ -DCMAKE_C_COMPILER=/usr/bin/gcc -DTRT_BIN_DIR=`pwd`/out
   args:
     chdir: /home/jetson/TensorRT/build
-  
+  environment: 
+    CUDA_HOME: /usr/local/cuda
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI
+    PATH: $PATH:$CUDA_HOME/bin
+
 - name: Tensor Install 5
   become: true 
   command: make nvinfer_plugin 
@@ -42,7 +46,7 @@
     chdir: /home/jetson/TensorRT/build
   environment: 
     CUDA_HOME: /usr/local/cuda
-    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+    LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI
     PATH: $PATH:$CUDA_HOME/bin
 
 - name: Libvinfer install 
